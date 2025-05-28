@@ -1,0 +1,9 @@
+Flask
+Flask-RESTX
+requests
+Flask-SQLAlchemy
+python-dotenv
+psycopg2-binary
+flask-jwt-extended
+pytest
+pytest-flask

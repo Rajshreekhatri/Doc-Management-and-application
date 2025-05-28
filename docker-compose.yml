@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: microservices_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  auth_service:
+    build: ./auth_service
+    ports:
+      - "5001:5000"
+    env_file:
+      - ./auth_service/.env
+    depends_on:
+      - postgres
+
+  user_service:
+    build: ./user_service
+    ports:
+      - "5002:5000"
+    env_file:
+      - ./user_service/.env
+    depends_on:
+      - postgres
+
+  document_service:
+    build: ./document_service
+    ports:
+      - "5003:5000"
+    env_file:
+      - ./document_service/.env
+    depends_on:
+      - postgres
+
+  ingestion_service:
+    build: ./ingestion_service
+    ports:
+      - "5004:5000"
+    env_file:
+      - ./ingestion_service/.env
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:

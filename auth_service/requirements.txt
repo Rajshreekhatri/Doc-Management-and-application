@@ -1,0 +1,11 @@
+Flask
+Flask-RESTX
+psycopg2-binary
+SQLAlchemy
+python-dotenv
+werkzeug
+Flask-SQLAlchemy
+flask-jwt-extended
+Flask-JWT-Extended
+pytest
+pytest-flask
